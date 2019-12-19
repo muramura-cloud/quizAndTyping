@@ -1,0 +1,188 @@
+@charset 'UTF-8';
+
+body {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  margin: 0;
+  padding-top: 200px;
+  background-color: #efdec1;
+  font-size: 14px;
+  font-family: Verdana,sans-serif;
+  user-select: none;
+}
+
+#entrance {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  background-color: rgba(#3498db,.8);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 70px;
+  font-weight: bold;
+}
+#entrance.hidden {
+  display: none;
+}
+
+.container {
+  position: relative;
+  margin: 0 auto;
+  width: 800px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 10px;
+  &.correct::after {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background-color: transparent;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    border: 20px tomato solid;
+  }
+  &.wrong::after {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background-color: transparent;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    transform: rotate(-45deg);
+    transform-origin: left top;
+    border-left: 20px blue solid;
+  }
+  &.wrong::before {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background-color: transparent;
+    top: 100px;
+    left: calc(50% - 80px);
+    transform: translateX(-50%);
+    transform: rotate(45deg);
+    transform-origin: right top;
+    border-right: 20px blue solid;
+  }
+}
+
+#question {
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
+#choices {
+  margin-bottom: 16px;
+  list-style: none;
+  padding: 0;
+  &>li {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 16px;
+  }
+}
+
+#answer {
+  font-weight: bold;
+}
+
+#target {
+  margin-bottom: 16px;
+  margin-top: 16px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 30px;
+  width: 778px;
+  &.correct {
+    background-color: #d4edda;
+    border-color: darken(#d4edda,15%);
+    color: #155724;
+    font-weight: bold;
+  }
+  &.wrong {
+    background-color: tomato;
+    border-color: darken(tomato,15%);
+    color: white;
+    font-weight: bold;
+  }
+}
+
+#result {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 300px;
+  background-color: white;
+  box-shadow: 0 4px 8px lighten(black,5%);
+  padding: 30px;
+  border-radius: 4px;
+  text-align: center;
+  transition: .4s;
+  &>p {
+    font-size: 24px;
+  }
+  &>a {
+    text-decoration: none;
+    display: block;
+  }
+}
+#result.hidden {
+  top: -100%;
+}
+
+#checkBtn,#nextBtn,#result>a {
+  background-color: #3498db;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px darken(#3498db,15%);
+  margin-bottom: 16px;
+}
+
+[id$="Btn"].disabled {
+  background-color: #ccc;
+  box-shadow: 0 4px darken(#ccc,15%);
+  opacity: .7;
+}
+
+#countDown {
+  position: absolute;
+  top: calc(100% + 16px);
+  left: 0;
+  width: 0;//widthを０からアニメーションさせたいな！
+  padding: 16px;
+  border-radius: 10px;
+}
+#countDown.countDown {
+  animation: sizeScale 15s ease-in-out normal;
+}
+@keyframes sizeScale {
+  0% {
+    width: 0;
+    background-color: white;
+  }
+  100% {
+    width:800px;
+    background-color: tomato;
+  }
+}

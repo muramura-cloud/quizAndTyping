@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initiaKl-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>タイピングクイズ</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <section id="entrance">
+    <p>click to start!</p>
+  </section>
+  <section id="container" class="container">
+    <p id="question"></p>
+    <ul id="choices"></ul>
+    <label id="answer" for="answer">解答欄</label>
+    <input name="target" id="target" placeholder="選んだ選択肢をタイプ！"></input>
+    <div id="checkBtn">判定</div>
+    <div id="nextBtn" class="disabled">次の問題</div>
+    <section id="result" class="hidden">
+      <p id="scored"></p>
+      <a href="">replay?</a>
+    </section>
+    <section id="countDown">
+    </section>
+    
+  </section>
+  <script src="js/script.js"></script>
+</body>
+</html>
